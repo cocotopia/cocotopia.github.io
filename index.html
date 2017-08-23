@@ -1,36 +1,39 @@
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- This is the title of the page - what's written will appear at the top of the browser window -->
-    <title>Keep Calm and Carry On</title>
 
-    <!-- This links to the stylesheet for this page -->
-    <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- This is the title of the page - what's written will appear at the top of the browser window -->
+  <title>Keep Calm and Carry On - @cocotopia</title>
 
-  <body>
-    <div class="wrapper">
-      <img src="Crown.svg" width="125">
-      <h1>
-        Keep<br> Calm
-        <span>and</span>
-        Carry<br> On
-      </h1>
-    </div>
-  </body>
-  <script type = "text/javascript" > 
-	toggle_color("#61beb3", "#90a2c6", 2000, 500);
-	
-	function toggle_color(color1, color2, cycle_time, wait_time) {
-	
-	    setInterval(function first_color() {
-	        document.body.style.backgroundColor = color1;
-	        setTimeout(change_color, wait_time);
-	    }, cycle_time);
-	
-	    function change_color() {
-	        document.body.style.backgroundColor = color2;
-	    }
-	}
- </script>
+  <!-- This links to the stylesheet for this page -->
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+  <div class="wrapper">
+    <img src="Crown.svg" width="125">
+    <h1>
+      Keep<br> Calm
+      <span>and</span> Carry
+      <br> On
+    </h1>
+    <p>@cocotopia</p>
+  </div>
+</body>
+<script type="text/javascript">
+  toggle_color("#61beb3", "#90a2c6", 2000, 500);
+
+  function toggle_color(color1, color2, cycle_time, wait_time) {
+
+    setInterval(function first_color() {
+      document.body.style.backgroundColor = color1;
+      setTimeout(change_color, wait_time);
+    }, cycle_time);
+
+    function change_color() {
+      document.body.style.backgroundColor = color2;
+    }
+  }
+</script>
+
 </html>
