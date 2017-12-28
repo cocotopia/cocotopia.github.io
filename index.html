@@ -6,16 +6,85 @@
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
   <script>
-    var OneSignal = window.OneSignal || [];
-    OneSignal.push(function() {
-      OneSignal.init({
-        appId: "289d39e0-3166-4acd-a723-8f4370393f88",
-        autoRegister: false,
-        notifyButton: {
-          enable: true,
-        },
-      });
-    });
+    // var OneSignal = window.OneSignal || [];
+    // OneSignal.push(function() {
+    //   OneSignal.init({
+    //     appId: "289d39e0-3166-4acd-a723-8f4370393f88",
+    //     autoRegister: false,
+    //     notifyButton: {
+    //       enable: true,
+    //     },
+    //   });
+    // });
+
+    //<!--
+	var OneSignal = window.OneSignal || [];
+		!function(e) {
+			OneSignal.push(["sendTags", {
+				"tipo_pagina": "portada_home"
+			}]),
+			OneSignal.push(["setDefaultTitle", "Jorgeduenas.com"]),
+			OneSignal.push(["init", {
+				appId: "289d39e0-3166-4acd-a723-8f4370393f88",
+				safari_web_id: "",
+				autoRegister: !0,
+				notifyButton: {
+					enable: !1
+				},
+				subdomainName: "jorgeduenascom",
+				welcomeNotification: {
+					disable: !0
+				},
+				promptOptions: {
+					siteName: "Jorgeduenas.com",
+					actionMessage: "Jorgeduenas.com quiere enviarte las noticias más relevantes.",
+					exampleNotificationTitle: "Este es un ejemplo de notificación",
+					exampleNotificationMessage: "Las notificaciones aparecerán en el escritorio",
+					exampleNotificationCaption: "(puede cancelar la suscripción en cualquier momento)",
+					acceptButtonText: "CONTINUAR",
+					cancelButtonText: "NO GRACIAS",
+					autoAcceptTitle: "Click en Permitir"
+				},
+				persistNotification: !1
+			}]);
+			var i = null;
+			OneSignal.push(function() {
+				OneSignal.getUserId().then(function(n) {
+					//e.querySelector(".switch").innerHTML += '<li><a href="" onclick="subscribeOneSignal(this, event)" class="btnNotif" id="btnNotif">Notificaciones <span class="btnNotif-switch"></span></a></li>';
+					e.querySelector(".switch").innerHTML += '<a href="" onclick="subscribeOneSignal(this, event)" class="btnNotif" id="btnNotif">Notificaciones <span class="btnNotif-switch"></span></a>';
+					var s = e.getElementById("btnNotif");
+					null == n ? s.classList ? s.classList.remove("on") : s.className = s.className.replace(new RegExp("(^|\\b)" + "on".split(" ").join("|") + "(\\b|$)","gi"), " ") : (i = n,
+					s.classList ? s.classList.add("on") : s.className += " on",
+					OneSignal.push(["getNotificationPermission", function(e) {}
+					]),
+					OneSignal.isPushNotificationsEnabled(function(e) {
+						e ? s.classList ? s.classList.add("on") : s.className += " on" : s.classList ? s.classList.remove("on") : s.className = s.className.replace(new RegExp("(^|\\b)" + "on".split(" ").join("|") + "(\\b|$)","gi"), " ")
+					}))
+				})
+			}),
+			OneSignal.push(function() {
+				OneSignal.on("subscriptionChange", function(n) {
+					var s = e.getElementById("btnNotif");
+					1 == n ? (OneSignal.getUserId().then(function(e) {
+						i = e
+					}),
+					s.classList ? s.classList.add("on") : s.className += " on") : 0 == n && (OneSignal.getUserId().then(function(e) {
+						i = e
+					}),
+					s.classList ? s.classList.remove("on") : s.className = s.className.replace(new RegExp("(^|\\b)" + "on".split(" ").join("|") + "(\\b|$)","gi"), " "))
+				})
+			}),
+			window.subscribeOneSignal = function(e, n) {
+				n.preventDefault();
+				(e.classList ? e.classList.contains("on") : new RegExp("(^| )on( |$)","gi").test(e.className)) ? (OneSignal.setSubscription(!1),
+				ga("send", "event", "Notificaciones", "Click", "Desuscribir")) : null != i ? (OneSignal.setSubscription(!0),
+				ga("send", "event", "Notificaciones", "Click", "Volver a Suscribir")) : (OneSignal.registerForPushNotifications({
+					modalPrompt: !0
+				}),
+				ga("send", "event", "Notificaciones", "Click", "Suscribir"))
+			}
+		}(document);
+		//-->
   </script>
 </head>
 
