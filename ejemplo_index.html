@@ -1,0 +1,750 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Direction-Aware 3D Hover Animation Demo</title>
+<style>
+
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+li {
+  margin: 5px;
+  position: relative;
+  width: 180px;
+  height: 180px;
+  display: inline-block;
+  vertical-align: top;
+  -webkit-perspective: 300px;
+          perspective: 300px;
+  -webkit-transform-origin: 50% 50% 90px;
+          transform-origin: 50% 50% 90px;
+}
+
+.w {
+  font-size: medium;
+  font-size: initial;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform-origin: 50% 50% -90px;
+          transform-origin: 50% 50% -90px;
+  will-change: transform;
+  -webkit-animation: 200ms ease-out 0ms 1 normal forwards paused;
+          animation: 200ms ease-out 0ms 1 normal forwards paused;
+}
+
+.f,
+.b {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  color: white;
+  -webkit-transition: none;
+  transition: none;
+}
+
+.f {
+  background-color: #00BCD4;
+  background: -webkit-linear-gradient(#00BCD4, #673AB7);
+  background: linear-gradient(#00BCD4, #673AB7);
+  -webkit-transform: translate3d(0,0,0);
+          transform: translate3d(0,0,0)
+}
+
+.f > svg{
+  mix-blend-mode: luminosity;
+}
+
+.b {
+  padding: 16px;
+  padding: 1rem;
+  background-image: -webkit-radial-gradient(circle, #333, #000 160%);
+  background-image: radial-gradient(circle, #333, #000 160%);
+  -webkit-transform: translate3d(0,0,-1px);
+          transform: translate3d(0,0,-1px);
+
+  display: -webkit-box;
+
+  display: -ms-flexbox;
+
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-shadow: 0 20px 20px black;
+  text-align: center;
+}
+
+.in-top .b,
+.out-top .b {
+  -webkit-transform-origin: 0% 100%;
+          transform-origin: 0% 100%;
+  -webkit-transform: translate3d(0, -100%, 0) rotate3d(1,0,0,90deg);
+          transform: translate3d(0, -100%, 0) rotate3d(1,0,0,90deg);
+}
+
+.in-right .b,
+.out-right .b {
+  -webkit-transform-origin: 0% 0%;
+          transform-origin: 0% 0%;
+  -webkit-transform: translate3d(100%, 0, 0) rotate3d(0,1,0,90deg);
+          transform: translate3d(100%, 0, 0) rotate3d(0,1,0,90deg);
+}
+
+.in-bottom .b,
+.out-bottom .b {
+  -webkit-transform-origin: 0% 0%;
+          transform-origin: 0% 0%;
+  -webkit-transform: translate3d(0, 100%, 0) rotate3d(-1,0,0,90deg);
+          transform: translate3d(0, 100%, 0) rotate3d(-1,0,0,90deg);
+}
+
+.in-left .b,
+.out-left .b {
+  -webkit-transform-origin: 100% 0;
+          transform-origin: 100% 0;
+  -webkit-transform: translate3d(-100%,0,0) rotate3d(0,-1,0,90deg);
+          transform: translate3d(-100%,0,0) rotate3d(0,-1,0,90deg);
+}
+
+.in {
+}
+
+.in-top .w{
+  -webkit-animation-name: in-top;
+          animation-name: in-top;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.in-right .w{
+  -webkit-animation-name: in-right;
+          animation-name: in-right;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.in-bottom .w{
+  -webkit-animation-name: in-bottom;
+          animation-name: in-bottom;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.in-left .w{
+  -webkit-animation-name: in-left;
+          animation-name: in-left;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.out {
+}
+
+.out-top .w{
+  -webkit-animation-name: out-top;
+          animation-name: out-top;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.out-right .w{
+  -webkit-animation-name: out-right;
+          animation-name: out-right;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.out-bottom .w{
+  -webkit-animation-name: out-bottom;
+          animation-name: out-bottom;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+.out-left .w{
+  -webkit-animation-name: out-left;
+          animation-name: out-left;
+  -webkit-animation-play-state: running;
+          animation-play-state: running;
+}
+
+@-webkit-keyframes in-top {
+  from  {-webkit-transform: rotate3d(0,0,0,0deg);transform: rotate3d(0,0,0,0deg)}
+  to    {-webkit-transform: rotate3d(-1,0,0,90deg);transform: rotate3d(-1,0,0,90deg)}
+}
+
+@keyframes in-top {
+  from  {-webkit-transform: rotate3d(0,0,0,0deg);transform: rotate3d(0,0,0,0deg)}
+  to    {-webkit-transform: rotate3d(-1,0,0,90deg);transform: rotate3d(-1,0,0,90deg)}
+}
+@-webkit-keyframes out-top {
+  from {-webkit-transform: rotate3d(-1,0,0,90deg);transform: rotate3d(-1,0,0,90deg)}
+  to   {-webkit-transform: rotate3d(0,0,0,0deg);transform: rotate3d(0,0,0,0deg)}
+}
+@keyframes out-top {
+  from {-webkit-transform: rotate3d(-1,0,0,90deg);transform: rotate3d(-1,0,0,90deg)}
+  to   {-webkit-transform: rotate3d(0,0,0,0deg);transform: rotate3d(0,0,0,0deg)}
+}
+
+@-webkit-keyframes in-right {
+  from  {-webkit-transform: rotate3d(0,0,0,0deg);transform: rotate3d(0,0,0,0deg)}
+  to    {-webkit-transform: rotate3d(0,-1,0,90deg);transform: rotate3d(0,-1,0,90deg)}
+}
+
+@keyframes in-right {
+  from  {-webkit-transform: rotate3d(0,0,0,0deg);transform: rotate3d(0,0,0,0deg)}
+  to    {-webkit-transform: rotate3d(0,-1,0,90deg);transform: rotate3d(0,-1,0,90deg)}
+}
+@-webkit-keyframes out-right {
+  from  {-webkit-transform: rotate3d(0,-1,0,90deg);transform: rotate3d(0,-1,0,90deg)}
+  to    {-webkit-transform: rotate3d(0,0,0,0deg);transform: rotate3d(0,0,0,0deg)}
+}
+@keyframes out-right {
+  from  {-webkit-transform: rotate3d(0,-1,0,90deg);transform: rotate3d(0,-1,0,90deg)}
+  to    {-webkit-transform: rotate3d(0,0,0,0deg);transform: rotate3d(0,0,0,0deg)}
+}
+
+@-webkit-keyframes in-bottom {
+  from  {-webkit-transform: rotate3d(0,0,0,0deg);transform: rotate3d(0,0,0,0deg)}
+  to    {-webkit-transform: rotate3d(1,0,0,90deg);transform: rotate3d(1,0,0,90deg)}
+}
+
+@keyframes in-bottom {
+  from  {-webkit-transform: rotate3d(0,0,0,0deg);transform: rotate3d(0,0,0,0deg)}
+  to    {-webkit-transform: rotate3d(1,0,0,90deg);transform: rotate3d(1,0,0,90deg)}
+}
+@-webkit-keyframes out-bottom {
+  from  {-webkit-transform: rotate3d(1,0,0,90deg);transform: rotate3d(1,0,0,90deg)}
+  to    {-webkit-transform: rotate3d(0,0,0,0deg);transform: rotate3d(0,0,0,0deg)}
+}
+@keyframes out-bottom {
+  from  {-webkit-transform: rotate3d(1,0,0,90deg);transform: rotate3d(1,0,0,90deg)}
+  to    {-webkit-transform: rotate3d(0,0,0,0deg);transform: rotate3d(0,0,0,0deg)}
+}
+
+@-webkit-keyframes in-left {
+  from  {-webkit-transform: rotate3d(0,0,0,0deg);transform: rotate3d(0,0,0,0deg)}
+  to    {-webkit-transform: rotate3d(0,1,0,90deg);transform: rotate3d(0,1,0,90deg)}
+}
+
+@keyframes in-left {
+  from  {-webkit-transform: rotate3d(0,0,0,0deg);transform: rotate3d(0,0,0,0deg)}
+  to    {-webkit-transform: rotate3d(0,1,0,90deg);transform: rotate3d(0,1,0,90deg)}
+}
+@-webkit-keyframes out-left {
+  from  {-webkit-transform: rotate3d(0,1,0,90deg);transform: rotate3d(0,1,0,90deg)}
+  to    {-webkit-transform: rotate3d(0,0,0,0deg);transform: rotate3d(0,0,0,0deg)}
+}
+@keyframes out-left {
+  from  {-webkit-transform: rotate3d(0,1,0,90deg);transform: rotate3d(0,1,0,90deg)}
+  to    {-webkit-transform: rotate3d(0,0,0,0deg);transform: rotate3d(0,0,0,0deg)}
+}
+
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 48px 24px;
+  padding: 3rem 1.5rem;
+  font-size: 16px;
+  font-family: 'Roboto', serif;
+  color: #000;
+  background-color: #fafafa;
+  line-height: 1.618;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+  padding-bottom: 48px;
+  padding-bottom: 3rem;
+}
+
+h1 {
+  font-size: 2em
+}
+
+h1 sup{
+  font-size: .7em;
+  color: #00BCD4;
+}
+
+ul {
+  font-size: 0;
+  padding: 0;
+  max-width: 760px;
+  margin: 0 auto;
+  list-style: none
+}
+
+ul::after{
+  content: '';
+  display: table;
+  clear: both;
+}
+
+footer {
+  font-size: 12px;
+  font-size: .75rem;
+  font-family: monospace;
+  padding-top: 48px;
+  padding-top: 3rem
+}
+
+footer a{
+  display: inline-block;
+  vertical-align: middle;
+}
+
+footer svg{
+  fill: currentColor;
+}
+
+:link,:visited {
+  color: #00BCD4;
+}
+
+.-center {
+  text-align: center;
+}
+
+.-neutral-mid {
+  color: rgb(153, 153, 153);
+}</style>
+</head>
+
+<body>
+<header class='-center'>
+  <h1>Direction-Aware 3D Hover Animation Demo</h1>
+</header>
+<ul class='-center'>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='img/html5.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          Html5
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='img/css3.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          Css3
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='img/javascript.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          Javascript
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='img/git.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          Git
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/i-dali.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          Webpack
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/i-huitzi.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          Gulp
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/i-man.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          NodeJS
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/i-v.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          Jquery
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/i-v2.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          Sass
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/i-v3.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          Pug
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/i-worms.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          Fisebase
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/i-xrays.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          MongoBD
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/i-xrays.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          CodeIngniter
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/i-xrays.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          MySql
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/i-xrays.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          Responsive Web Design
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/i-xrays.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          Progresive Web Aplication
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/i-xrays.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          VueJS
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/i-xrays.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          ReactJS
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/i-xrays.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          Angular
+        </h3>
+      </div>
+    </div>
+  </li>
+  <li>
+    <div class='w'>
+      <div class='f'>
+        <svg viewBox='0 0 180 180'>
+          <image height='100%' preserveAspectRatio='xMidYMid slice' width='100%' xlink:href='https://s3-us-west-2.amazonaws.com/s.cdpn.io/9473/i-xrays.png'></image>
+        </svg>
+      </div>
+      <div class='b'>
+        <h3>
+          Visual Studio Code
+        </h3>
+      </div>
+    </div>
+  </li>
+</ul>
+<footer class='-center'>
+  <p class='-neutral-mid'>
+    by
+    <a href='https://twitter.com/pixelia_me' target='_blank' title='Noel Delgado' rel="nofollow">
+      <svg height='16' viewBox='0 0 57 30' width='28'>
+        <path d='M28.1312,9.5341 C29.7966,9.5341 32.1025,10.627 34.248,12.368 C49.3297,11.5836 53.8793,-0.4796 55.5773,0.6783 C57.8326,3.2476 50.8638,16.3535 39.4,19.088 C39.8655,20.2628 40.1364,21.4786 40.1364,22.6983 C40.1364,25.9478 38.837,26.7409 36.7281,28.8974 L36.704,28.824 C36.4799,29.0276 36.208,29.2318 35.8945,29.4 C35.8945,29.4 36.1346,27.0065 34.9341,26.7672 C34.9341,26.7672 34.3739,27.4054 33.0133,27.2459 C32.8532,25.8896 32.293,25.4109 32.1329,25.3311 C31.4126,25.4109 30.9324,26.5278 30.132,26.5278 C29.8,26.1969 29.5184,25.5615 29.312,24.972 C29.0201,25.4221 28.6036,26.1128 28.2512,26.2885 C27.8796,26.2885 27.1476,25.2858 26.836,24.832 C26.6262,25.4581 26.3285,26.1707 25.9702,26.5278 C25.1699,26.5278 24.6896,25.4109 23.9694,25.3311 C23.8093,25.4109 23.249,25.8896 23.089,27.2459 C21.7284,27.4054 21.1681,26.7672 21.1681,26.7672 C19.9676,27.0065 20.2077,29.4 20.2077,29.4 C19.6122,29.0804 19.1739,28.6307 18.908,28.304 L18.8667,28.3947 C17.1544,26.3262 16.1259,25.5896 16.1259,22.6983 C16.1259,21.4938 16.3637,20.2895 16.784,19.128 C5.2094,16.4922 -1.8448,3.2615 0.4227,0.6783 C2.119,-0.4785 6.6627,11.5578 21.708,12.364 C23.8143,10.6244 26.1724,9.5341 28.1312,9.5341 Z M28.8514,20.3048 C28.8514,20.3048 30.4121,21.7409 32.213,21.7409 C34.0137,21.7409 35.3343,19.3474 35.3343,19.3474 L28.8514,20.3048 Z M20.6879,19.3474 C20.6879,19.3474 22.2486,21.7409 24.0494,21.7409 C25.8502,21.7409 27.1707,20.3048 27.1707,20.3048 L20.6879,19.3474 Z' fill-rule='evenodd'></path>
+      </svg>
+    </a>
+  </p>
+</footer>
+<script>
+'use strict';
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+// - Noel Delgado | @pixelia_me
+
+var DAH = function () {
+  function DAH(nodes) {
+    var _this = this;
+
+    _classCallCheck(this, DAH);
+
+    this.nodes = [];
+
+    Array.prototype.slice.call(nodes, 0).forEach(function (node) {
+      _this.nodes.push(new Node(node));
+    });
+
+    this._bindEvents();
+  }
+
+  DAH.prototype._bindEvents = function _bindEvents() {
+    var _this2 = this;
+
+    ['_resizeHandler'].forEach(function (fn) {
+      return _this2[fn] = _this2[fn].bind(_this2);
+    });
+    window.addEventListener('resize', this._resizeHandler, false);
+  };
+
+  DAH.prototype._resizeHandler = function _resizeHandler() {
+    this.nodes.forEach(function (node) {
+      return node.update();
+    });
+  };
+
+  return DAH;
+}();
+
+var Node = function () {
+  function Node(node) {
+    _classCallCheck(this, Node);
+
+    this.element = node;
+    this._bindEvents().update();
+  }
+
+  Node.prototype.update = function update() {
+    // const bcr = this.element.getBoundingClientRect();
+    // this.l = bcr.left;
+    // this.t = bcr.top;
+    this.w = this.element.offsetWidth;
+    this.h = this.element.offsetHeight;
+    this.l = this.element.offsetLeft;
+    this.t = this.element.offsetTop;
+  };
+
+  Node.prototype._bindEvents = function _bindEvents() {
+    var _this3 = this;
+
+    ['_mouseEnterHandler', '_mouseOutHandler'].forEach(function (fn) {
+      return _this3[fn] = _this3[fn].bind(_this3);
+    });
+    this.element.addEventListener('mouseenter', this._mouseEnterHandler, false);
+    this.element.addEventListener('mouseout', this._mouseOutHandler, false);
+    return this;
+  };
+
+  Node.prototype._mouseEnterHandler = function _mouseEnterHandler(ev) {
+    this._addClass(ev, 'in');
+  };
+
+  Node.prototype._mouseOutHandler = function _mouseOutHandler(ev) {
+    this._addClass(ev, 'out');
+  };
+
+  Node.prototype._addClass = function _addClass(ev, state) {
+    var direction = this._getDirection(ev);
+    var class_suffix = '';
+
+    switch (direction) {
+      case 0:
+        class_suffix = '-top';break;
+      case 1:
+        class_suffix = '-right';break;
+      case 2:
+        class_suffix = '-bottom';break;
+      case 3:
+        class_suffix = '-left';break;
+    }
+
+    this.element.className = '';
+    this.element.classList.add(state + class_suffix);
+  };
+
+  Node.prototype._getDirection = function _getDirection(ev) {
+    var w = this.w,
+        h = this.h,
+        x = ev.pageX - this.l - w / 2 * (w > h ? h / w : 1),
+        y = ev.pageY - this.t - h / 2 * (h > w ? w / h : 1),
+        d = Math.round(Math.atan2(y, x) / 1.57079633 + 5) % 4;
+
+    return d;
+  };
+
+  return Node;
+}();
+
+new DAH(document.querySelectorAll('li'));
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46156385-1', 'cssscript.com');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
