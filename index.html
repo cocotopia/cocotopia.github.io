@@ -5,6 +5,13 @@
   <title>Keep Calm and Carry On - @cocotopia 2017</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+  <style>
+  .btnNotif-switch{background-color:#186425;border: 1px solid #ffffff; border-radius:12px;display:inline-block;height:24px;margin:0 10px;position:relative;transition:background .3s ease;vertical-align:middle;width:52px;}
+.btnNotif-switch:after{background-color:#fff;border-radius:50%;content:'';display:inline-block;height:20px;left:28px;position:absolute;top:2px;transition:left .3s ease,background .3s ease,box-shadow .1s ease; width:20px}
+.btnNotif.on .btnNotif-switch:after{background-color:#ffffff;left:2px}
+.btnNotif:after{content:"Desactivado"; font-size: 13px;font-weight: normal; cursor:default;text-decoration:none;}
+.btnNotif.on:after{content:"Activado"; font-size:13px;font-weight: normal; cursor: default;text-decoration:none;}
+  </style>
   <script>
     // var OneSignal = window.OneSignal || [];
     // OneSignal.push(function() {
@@ -16,7 +23,6 @@
     //     },
     //   });
     // });
-
     //<!--
 	var OneSignal = window.OneSignal || [];
 		!function(e) {
@@ -101,6 +107,10 @@
     <p><i>Lima - Perú</i></p>
     <p>2017</p>
   </div>
+  <h3 class="switch">
+      <!-- <a href="" onclick="subscribeOneSignal(this, event)" class="btnNotif" id="btnNotif">Notificaciones <span class="btnNotif-switch"></span></a>
+      <span class="text-status off">Desactivado</span> -->
+  </h3>
 </body>
 <script type="text/javascript">
   toggle_color("blue", "pink", 3000, 500);
