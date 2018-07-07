@@ -7,11 +7,15 @@
 	<title>@cocotopia</title>
 </head>
 <body>
-	<p> [ hello world ]</p>
+	<p> [ hello world ] </p>
+	<a href="#">link</a>
 <script>
-	setTimeout(()=>{
-		window.open('http://google.com')
-	},3000)
+	var link = document.querySelector('a');
+	link.addEventListener('click', function(e){
+		e.preventDefault();
+		link.setAttribute('href', "http://google.com")
+		link.click();
+	})
 </script>
 </body>
 </html>
