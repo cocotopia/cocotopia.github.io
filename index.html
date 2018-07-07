@@ -8,13 +8,15 @@
 </head>
 <body>
 	<p> [ hello world ] </p>
-	<a href="#">link</a>
+	<a data-url="http://google.com">link</a>
 <script>
 	var link = document.querySelector('a');
+	var instance;
 	link.addEventListener('click', function(e){
+		instance = window.open('','blank');
 		e.preventDefault();
-		link.setAttribute('href', "http://google.com")
-		link.click();
+		var linkData = link.getAttribute('data-url');
+		instance.location = linkData;
 	})
 </script>
 </body>
