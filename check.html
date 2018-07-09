@@ -12,14 +12,14 @@
         var getCity = urlCurrent.searchParams.get("city");
         console.log(getCity);
 
-        
         setTimeout(function(){
             if(getCity == "none"){
                 window.close();
             }else{
-                window.href = 'http://google.com/search?q='+ getCity.toLowerCase();
+                window.location.href = 'http://google.com/search?q='+ getCity.toLowerCase();
             }
         },5000);
+
     </script>
 </body>
 </html>
