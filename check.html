@@ -9,17 +9,43 @@
 <body>
     <p>Validando...</p>
     <script>
+        
+        var app = {};
+	    app.apikey = "8253ee7e45025695deca4098ceed1c02";
+        app.url = "https://api.openweathermap.org/data/2.5/weather?q=Lima&APPID=" + app.apikey + "&units=metric";
+    
         var urlCurrent = new URL(window.location.href);
         var getCity = urlCurrent.searchParams.get("city");
-        console.log(getCity);
 
-        setTimeout(function(){
-            if(getCity == "none"){
-                window.close();
-            }else{
-                window.location.href = 'http://google.com/search?q=Clima '+ getCity.toLowerCase();
-            }
-        }, 1000);
+        fetch("https://api.openweathermap.org/data/2.5/weather?q=" + getCity + "&APPID=" + app.apikey + "&units=metric")
+            .then(
+                function(response) {
+                    if (response.status !== 200) {
+                        console.log('Looks like there was a problem. Status Code: ' + response.status);
+                        return;
+                    }
+                    response.json().then(function(data) {
+                        console.log(data);
+                        console.log(data.name);
+                        if(getCity != "none"){
+                            window.location.href = 'http://google.com/search?q=Clima '+ getCity.toLowerCase();
+                        }else{
+                            window.close();
+                        }
+                    });
+                }
+            )
+            .catch(function(err) {
+                console.log('Fetch Error :-S', err);
+            });
+
+        // setTimeout(function(){
+        //     if(getCity == "none"){
+        //         window.close();
+        //     }else{
+        //         window.location.href = 'http://google.com/search?q=Clima '+ getCity.toLowerCase();
+        //     }
+        // }, 1000);
     </script>
 </body>
 </html>
