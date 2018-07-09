@@ -124,11 +124,11 @@
 		e.preventDefault();
 
 		fetch(app.url).then(function(response) {
-			console.log(response)
-		}).then(function(returnedValue) {
-			console.log(returnedValue)
-		}).catch(function(err) {
-			console.log("Error: " , err)
+				return response.json();
+			}).then(function(json) {
+				console.log("Error: " , err)
+			}).catch(function(err) {
+				console.log("Error: " , err)
 		});
 
 		var linkData = link.getAttribute('data-url');
