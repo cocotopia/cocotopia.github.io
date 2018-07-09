@@ -132,6 +132,9 @@
 						}
 						response.json().then(function(data) {
 							console.log(data);
+							console.log(data.name);
+
+							 window.open('http://google.com/search?q='+ data.name);
 						});
 					}
 				)
@@ -139,9 +142,10 @@
 					console.log('Fetch Error :-S', err);
 				});
 
-		var linkData = link.getAttribute('data-url');
-		instance.location = linkData;
-	});
+		//var linkData = link.getAttribute('data-url');
+		//instance.location = linkData;
+
+});
 
 </script>
 </body>
