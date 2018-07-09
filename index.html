@@ -125,7 +125,7 @@
 	button.addEventListener('click', function(e){
 		instance = window.open('','blank');
 		e.preventDefault();
-			fetch(app.url)
+			fetch("https://api.openweathermap.org/data/2.5/weather?q=" + text.value + "&APPID=" + app.apikey + "&units=metric")
 				.then(
 					function(response) {
 						if (response.status !== 200) {
