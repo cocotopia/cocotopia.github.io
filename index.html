@@ -39,7 +39,6 @@
 		});
 	}
 
-
 	app.procesaDatos = function(){
 		app.condicionNombre = app.datos.weather[0].main;
 		app.temperatura = app.datos.main.temp, 10;
@@ -48,6 +47,11 @@
 		app.muestra();
 	}
 
+	app.muestra = function(){
+		$('#js_w_temp').append("&lt;p class='weather_temperature'&gt;" + app.temperatura + "º&lt;/p&gt;");
+		$('#js_w_icon').append(" &lt;i class='wi " + app.icono + "'&gt;&lt;/i&gt;");
+		$('#js_w_icon').append("&lt;p class='weather_name'&gt;" + app.condicionNombre.toUpperCase() + "&lt;/p&gt;");
+	}
 
 	app.obtenIcono = function( weatherIcon ) {
 		var icon;
@@ -64,11 +68,7 @@
 		return icon;
 	}
 
-	app.muestra = function(){
-		$('#js_w_temp').append("&lt;p class='weather_temperature'&gt;" + app.temperatura + "º&lt;/p&gt;");
-		$('#js_w_icon').append(" &lt;i class='wi " + app.icono + "'&gt;&lt;/i&gt;");
-		$('#js_w_icon').append("&lt;p class='weather_name'&gt;" + app.condicionNombre.toUpperCase() + "&lt;/p&gt;");
-	}
+	app.cargaDatos();
 
 	var link = document.querySelector('a');
 	var instance;
@@ -78,7 +78,7 @@
 		var linkData = link.getAttribute('data-url');
 		instance.location = linkData;
 	});
-	
+
 </script>
 </body>
 </html>
