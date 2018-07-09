@@ -141,6 +141,7 @@
 								instance.location =  'check.html?city='+ text.value.toLowerCase();
 								parraf.textContent = 'Genial! es Lima y el clima es ' + data.name  + " es " + data.main.temp;
 								instance.postMessage("hello there!", "https://jorgeduenas.com");
+								return false;
 							}else{
 								console.log('No es Lima. Pero el clima de ' + data.name  + " es " + data.main.temp )
 								parraf.textContent = 'No es Lima. Pero el clima de ' + data.name  + " es " + data.main.temp;

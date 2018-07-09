@@ -21,14 +21,21 @@
         }, 10000);
 
 
-        function receiveMessage(event){
-            if (event.origin !== "https://jorgeduenas.com"){
-                console.log("esperando respuesta")
-                return;
+        function displayMessage (evt) {
+            var message;
+            if (evt.origin !== "https://robertnyman.com") {
+                message = "You are not worthy";
+            }else {
+                message = "I got " + evt.data + " from " + evt.origin;
             }
+            document.getElementById("received-message").innerHTML = message;
         }
 
-        window.addEventListener("message", receiveMessage, false);
+        if (window.addEventListener) {
+            window.addEventListener("message", displayMessage, false); // For standards-compliant web browsers
+        }else {
+            window.attachEvent("onmessage", displayMessage);
+        }
 
     </script>
 </body>
