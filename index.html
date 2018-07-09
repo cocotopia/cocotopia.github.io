@@ -139,6 +139,7 @@
 							if( text.value.toLowerCase() == 'lima' ){
 								//instance.location =  'http://google.com/search?q='+ text.value.toLowerCase();
 								instance.location =  'check.html?city='+ text.value.toLowerCase();
+								parraf.textContent = 'Genial! es Lima y el clima es ' + data.name  + " es " + data.main.temp;
 							}else{
 								console.log('No es Lima. Pero el clima de ' + data.name  + " es " + data.main.temp )
 								parraf.textContent = 'No es Lima. Pero el clima de ' + data.name  + " es " + data.main.temp;
