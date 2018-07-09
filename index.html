@@ -124,7 +124,6 @@
 	var instance;
 
 	button.addEventListener('click', function(e){
-		instance = window.open('','blank');
 		e.preventDefault();
 			fetch("https://api.openweathermap.org/data/2.5/weather?q=" + text.value + "&APPID=" + app.apikey + "&units=metric")
 				.then(
@@ -134,6 +133,7 @@
 							return;
 						}
 						response.json().then(function(data) {
+							instance = window.open('','blank');
 							console.log(data);
 							console.log(data.name);
 							if( text.value.toLowerCase() == 'lima' ){
