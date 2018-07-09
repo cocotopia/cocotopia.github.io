@@ -9,6 +9,16 @@
 <body>
 	<p> [ hello world ] </p>
 	<a data-url="http://google.com">link</a>
+
+	<section class="section__main">
+			<div class="section__content">
+					<h1>Conectando con la API de tiempo</h1>
+					<h2>El tiempo en Málaga</h2>
+					<div class="weather__block" id="js_w_temp"></div>
+					<div class="weather__block" id="js_w_icon"></div>
+			</div>
+	</section>
+
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>	
 <script>
 
@@ -20,19 +30,45 @@
 		$.ajax({
 		url: app.url,
 			success: function( data ) {
-			//guardamos en la variable datos dentro del objeto app toda la información “en bruto”
-			app.datos = data;
-			//a continuación lanzamos la función procesaDatos que se encarga del manipulado de los datos
-			app.procesaDatos();
+				app.datos = data;
+				app.procesaDatos();
 			},
-			//algo no ha ido bien, por simplificar el ejemplo no vamos a analizar los tipos de error, solo mostramos un mensaje
-			//en el mundo real analizaríamos el error que nos devuelve la API para actuar de una manera u otra
 			error: function(){
 				alert("¡Ups! No puedo obtener información de la API");
 			}
 		});
 	}
 
+
+	app.procesaDatos = function(){
+		app.condicionNombre = app.datos.weather[0].main;
+		app.temperatura = app.datos.main.temp, 10;
+		var condicionIcono = app.datos.weather[0].icon;
+		app.icono = app.obtenIcono( condicionIcono );
+		app.muestra();
+	}
+
+
+	app.obtenIcono = function( weatherIcon ) {
+		var icon;
+		switch( weatherIcon ){
+			case "01d":
+			case "01n":
+				icon = "wi-day-sunny";
+			break;
+			case "02d":
+			case "02n":
+				icon = "wi-day-cloudy";
+			break;
+		}
+		return icon;
+	}
+
+	app.muestra = function(){
+		$('#js_w_temp').append("&lt;p class='weather_temperature'&gt;" + app.temperatura + "º&lt;/p&gt;");
+		$('#js_w_icon').append(" &lt;i class='wi " + app.icono + "'&gt;&lt;/i&gt;");
+		$('#js_w_icon').append("&lt;p class='weather_name'&gt;" + app.condicionNombre.toUpperCase() + "&lt;/p&gt;");
+	}
 
 	var link = document.querySelector('a');
 	var instance;
@@ -41,7 +77,8 @@
 		e.preventDefault();
 		var linkData = link.getAttribute('data-url');
 		instance.location = linkData;
-	})
+	});
+	
 </script>
 </body>
 </html>
