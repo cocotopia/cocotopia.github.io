@@ -31,11 +31,12 @@
 		$.ajax({
 		url: app.url,
 			success: function( data ) {
+				console.log(data);
 				app.datos = data;
 				app.procesaDatos();
 			},
 			error: function(){
-				alert("¡Ups! No puedo obtener información de la API");
+				console.log("¡Ups! No puedo obtener información de la API");
 			}
 		});
 	}
