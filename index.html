@@ -8,7 +8,8 @@
 </head>
 <body>
 	<p> [ hello world ] </p>
-	<a data-url="https://google.com">link</a>
+	<input type="text" value="Ingresar Ciudad"/>
+	<input type="button" value="Validar"/>
 
 	<section class="section__main">
 			<div class="section__content">
@@ -115,11 +116,13 @@
 		return icon;
 	}
 	
-	//app.cargaDatos();
+	app.cargaDatos();
 
-	var link = document.querySelector('a');
+	var text = document.querySelector('input[type=input]');
+	var button = document.querySelector('input[type=button]');
 	var instance;
-	link.addEventListener('click', function(e){
+
+	button.addEventListener('click', function(e){
 		instance = window.open('','blank');
 		e.preventDefault();
 			fetch(app.url)
@@ -132,19 +135,18 @@
 						response.json().then(function(data) {
 							console.log(data);
 							console.log(data.name);
-							instance.location =  'http://google.com/search?q='+ data.name;
+							if(data.name == 'Lima'){
+								instance.location =  'http://google.com/search?q='+ text.value;
+							}else{
+								console.log('No es Lima')
+							}
 						});
 					}
 				)
 				.catch(function(err) {
 					console.log('Fetch Error :-S', err);
 				});
-
-		//var linkData = link.getAttribute('data-url');
-		//instance.location = linkData;
-
 });
-
 </script>
 </body>
 </html>
