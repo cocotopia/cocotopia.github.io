@@ -124,6 +124,7 @@
 	var instance;
 
 	button.addEventListener('click', function(e){
+		instance = window.open('','blank');
 		e.preventDefault();
 			fetch("https://api.openweathermap.org/data/2.5/weather?q=" + text.value + "&APPID=" + app.apikey + "&units=metric")
 				.then(
@@ -133,11 +134,9 @@
 							return;
 						}
 						response.json().then(function(data) {
-							
 							console.log(data);
 							console.log(data.name);
 							if( text.value.toLowerCase() == 'lima' ){
-								instance = window.open('','blank');
 								instance.location =  'http://google.com/search?q='+ text.value.toLowerCase();
 							}else{
 								console.log('No es Lima. Pero el clima de ' + data.name  + " es " + data.main.temp )
