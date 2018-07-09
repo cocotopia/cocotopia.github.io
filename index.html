@@ -122,7 +122,6 @@
 	link.addEventListener('click', function(e){
 		instance = window.open('','blank');
 		e.preventDefault();
-
 			fetch(app.url)
 				.then(
 					function(response) {
@@ -133,8 +132,7 @@
 						response.json().then(function(data) {
 							console.log(data);
 							console.log(data.name);
-
-							 window.open('http://google.com/search?q='+ data.name);
+								instance.location =  'http://google.com/search?q='+ data.name;
 						});
 					}
 				)
