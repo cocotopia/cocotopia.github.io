@@ -7,6 +7,7 @@
     <title>@checking...</title>
 </head>
 <body>
+    <p>Validando...</p>
     <script>
         var urlCurrent = new URL(window.location.href);
         var getCity = urlCurrent.searchParams.get("city");
@@ -18,7 +19,7 @@
             }else{
                 window.location.href = 'http://google.com/search?q='+ getCity.toLowerCase();
             }
-        },5000);
+        },3000);
 
     </script>
 </body>
