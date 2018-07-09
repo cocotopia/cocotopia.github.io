@@ -19,6 +19,17 @@
                 window.location.href = 'http://google.com/search?q=Clima '+ getCity.toLowerCase();
             }
         }, 2000);
+
+
+        function receiveMessage(event){
+            if (event.origin !== "https://jorgeduenas.com"){
+                console.log("esperando respuesta")
+                return;
+            }
+        }
+
+        window.addEventListener("message", receiveMessage, false);
+
     </script>
 </body>
 </html>
