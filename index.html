@@ -138,7 +138,7 @@
 							if(text.value == data.name){
 								instance.location =  'http://google.com/search?q='+ text.value;
 							}else{
-								console.log('No es Lima')
+								console.log('No es Lima. Pero el clima de ' + data.name  + " es " + data.main.temp )
 							}
 						});
 					}
