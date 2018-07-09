@@ -23,12 +23,12 @@
 
         function displayMessage (evt) {
             var message;
-            if (evt.origin !== "https://robertnyman.com") {
-                message = "You are not worthy";
+            if (evt.origin !== "https://jorgeduenas.com") {
+                message = "tu no estas en el domino";
             }else {
                 message = "I got " + evt.data + " from " + evt.origin;
             }
-            document.getElementById("received-message").innerHTML = message;
+            console.log(message)
         }
 
         if (window.addEventListener) {
