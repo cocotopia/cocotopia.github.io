@@ -124,13 +124,20 @@
 		e.preventDefault();
 
 			fetch(app.url)
-			.then((resp) => resp.json())
-			.then(function(data) {
-				console.log(data.results);
-			})
-			.catch(function(error) {
-				console.log(error);
-			}); 
+				.then(
+					function(response) {
+						if (response.status !== 200) {
+							console.log('Looks like there was a problem. Status Code: ' + response.status);
+							return;
+						}
+						response.json().then(function(data) {
+							console.log(data);
+						});
+					}
+				)
+				.catch(function(err) {
+					console.log('Fetch Error :-S', err);
+				});
 
 		var linkData = link.getAttribute('data-url');
 		instance.location = linkData;
