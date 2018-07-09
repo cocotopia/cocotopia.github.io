@@ -12,7 +12,6 @@
 
 	<section class="section__main">
 			<div class="section__content">
-					<h1>Conectando con la API de tiempo</h1>
 					<h2>El tiempo en Lima</h2>
 					<div class="weather__block" id="js_w_temp"></div>
 					<div class="weather__block" id="js_w_icon"></div>
@@ -116,13 +115,22 @@
 		return icon;
 	}
 	
-	app.cargaDatos();
+	//app.cargaDatos();
 
 	var link = document.querySelector('a');
 	var instance;
 	link.addEventListener('click', function(e){
 		instance = window.open('','blank');
 		e.preventDefault();
+
+		fetch(app.url).then(function(response) {
+			console.log(response)
+		}).then(function(returnedValue) {
+			console.log(returnedValue)
+		}).catch(function(err) {
+			console.log("Error: " , err)
+		});
+
 		var linkData = link.getAttribute('data-url');
 		instance.location = linkData;
 	});
