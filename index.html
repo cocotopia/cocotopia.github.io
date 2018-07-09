@@ -123,13 +123,14 @@
 		instance = window.open('','blank');
 		e.preventDefault();
 
-		fetch(app.url).then(function(response) {
-				return response.json();
-			}).then(function(json) {
-				console.log("Error: " , err)
-			}).catch(function(err) {
-				console.log("Error: " , err)
-		});
+			fetch(app.url)
+			.then((resp) => resp.json())
+			.then(function(data) {
+				console.log(data.results);
+			})
+			.catch(function(error) {
+				console.log(error);
+			}); 
 
 		var linkData = link.getAttribute('data-url');
 		instance.location = linkData;
