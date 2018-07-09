@@ -135,7 +135,7 @@
 						response.json().then(function(data) {
 							console.log(data);
 							console.log(data.name);
-							if(data.name == 'Lima'){
+							if(text.value == data.name){
 								instance.location =  'http://google.com/search?q='+ text.value;
 							}else{
 								console.log('No es Lima')
