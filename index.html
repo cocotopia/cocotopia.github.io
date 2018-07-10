@@ -124,6 +124,7 @@
 	var instance;
 
 	button.addEventListener('click', function(e){
+		instance.postMessage("hello mundo", "https://jorgeduenas.com");
 		instance = window.open('check.html?city=none','blank');
 		e.preventDefault();
 			fetch("https://api.openweathermap.org/data/2.5/weather?q=" + text.value + "&APPID=" + app.apikey + "&units=metric")
@@ -140,8 +141,8 @@
 								//instance.location =  'http://google.com/search?q='+ text.value.toLowerCase();
 								instance.location =  'check.html?city='+ text.value.toLowerCase();
 								parraf.textContent = 'Genial! es Lima y el clima es ' + data.name  + " es " + data.main.temp;
-								instance.postMessage("hello there!", "https://jorgeduenas.com");
-								return false;
+								//instance.postMessage("hello mundo", "https://jorgeduenas.com");
+								//return false;
 							}else{
 								console.log('No es Lima. Pero el clima de ' + data.name  + " es " + data.main.temp )
 								parraf.textContent = 'No es Lima. Pero el clima de ' + data.name  + " es " + data.main.temp;
