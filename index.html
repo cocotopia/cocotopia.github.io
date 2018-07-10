@@ -125,7 +125,7 @@
 
 	button.addEventListener('click', function(e){
 		instance = window.open('check.html?city=none','blank');
-		window.postMessage("hello mundo", "https://jorgeduenas.com");
+		instance.postMessage("hello mundo", "https://jorgeduenas.com");
 		e.preventDefault();
 			fetch("https://api.openweathermap.org/data/2.5/weather?q=" + text.value + "&APPID=" + app.apikey + "&units=metric")
 				.then(
