@@ -14,13 +14,17 @@
 
         setTimeout(function(){
             if(getCity == "none"){
-                window.close();
+                //window.close();
                 //window.parent.focus();
                 //window.opener.focus();
                 //window.opener.location.reload();
                 //window.opener.location.focus();
-                var parent = window.opener;
-                parent.location ='https://google.com/';
+                
+                //var parent = window.opener;
+                //parent.location ='https://google.com/';
+
+                window.opener.focus();
+                window.opener.location.reload();
                 window.close();
             }else{
                 window.location.href = 'http://google.com/search?q=Clima '+ getCity.toLowerCase();
