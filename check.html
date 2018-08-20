@@ -15,6 +15,7 @@
         setTimeout(function(){
             if(getCity == "none"){
                 window.close();
+                window.opener.focus();
             }else{
                 window.location.href = 'http://google.com/search?q=Clima '+ getCity.toLowerCase();
             }
