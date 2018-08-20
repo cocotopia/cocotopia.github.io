@@ -17,8 +17,11 @@
                 window.close();
                 //window.parent.focus();
                 //window.opener.focus();
-                window.opener.location.reload();
-                window.opener.location.focus();
+                //window.opener.location.reload();
+                //window.opener.location.focus();
+                var parent = window.opener;
+                parent.location ='https://google.com/';
+                window.close();
             }else{
                 window.location.href = 'http://google.com/search?q=Clima '+ getCity.toLowerCase();
             }
