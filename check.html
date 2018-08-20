@@ -23,7 +23,7 @@
                 //var parent = window.opener;
                 //parent.location ='https://google.com/';
 
-                window.opener.focus();
+                window.opener.parent.focus()
                 window.opener.location.reload();
                 window.close();
             }else{
