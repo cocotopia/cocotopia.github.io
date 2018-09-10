@@ -14,11 +14,11 @@
 </head>
 
 <body>
-    <amp-carousel width="400" height="300" layout="responsive" type="slides">
+    <!-- <amp-carousel width="400" height="300" layout="responsive" type="slides">
         <amp-img src="https://ampbyexample.com/img/image1.jpg" width="400" height="300" layout="responsive" alt="a sample image"></amp-img>
         <amp-img src="https://ampbyexample.com/img/image2.jpg" width="400" height="300" layout="responsive" alt="another sample image"></amp-img>
         <amp-img src="https://ampbyexample.com/img/image3.jpg" width="400" height="300" layout="responsive" alt="and another sample image"></amp-img>
-    </amp-carousel>
+    </amp-carousel> -->
 
     <!-- <amp-carousel id="custom-button" width="400" height="300" layout="responsive" type="slides" autoplay delay="2000">
         <amp-img src="https://ampbyexample.com/img/image1.jpg" width="400" height="300" layout="responsive" alt="a sample image"></amp-img>
@@ -31,6 +31,60 @@
         <amp-img src="https://ampbyexample.com/img/image2.jpg" width="400" height="300" layout="responsive" alt="another sample image"></amp-img>
         <amp-img src="https://ampbyexample.com/img/image3.jpg" width="400" height="300" layout="responsive" alt="and another sample image"></amp-img>
     </amp-carousel> -->
+
+    <amp-carousel [slide]="selectedSlide" class="media gallery i-amphtml-layout-responsive i-amphtml-layout-size-defined i-amphtml-element i-amphtml-slidescroll i-amphtml-layout"
+        height="470" i-amphtml-layout="responsive" layout="responsive" on="slideChange:AMP.setState({selectedSlide: event.index}),AMP.navigateTo(url='http://elcomercio.pe/lima/sucesos/alianza-lima-encuentra-estadio-matute-invasion-evangelicos-fotos-noticia-555830?foto=2')"
+        type="slides" width="600">
+        <i-amphtml-sizer style="display:block;padding-top:78.3333%;"></i-amphtml-sizer>
+
+        <div class="i-amphtml-slides-container i-amphtml-slidescroll-no-snap" aria-live="polite">
+            <div class="i-amphtml-slide-item i-amphtml-slide-item-show">
+                <div class="slide amp-carousel-slide" aria-hidden="false">
+                    <div class="inner">
+                        <amp-img alt="(Foto: El Comercio)" class="i-amphtml-layout-responsive i-amphtml-layout-size-defined i-amphtml-element i-amphtml-layout"
+                            height="360" i-amphtml-layout="responsive" layout="responsive" src="https://img-elcomercio-pe.cdn.ampproject.org/i/s/img.elcomercio.pe/uploads/2018/09/10/5b968159cd40f.jpeg"
+                            srcset="https://img-elcomercio-pe.cdn.ampproject.org/ii/w680/s/img.elcomercio.pe/uploads/2018/09/10/5b968159cd40f.jpeg 680w, https://img-elcomercio-pe.cdn.ampproject.org/ii/w1200/s/img.elcomercio.pe/uploads/2018/09/10/5b968159cd40f.jpeg 1200w"
+                            title="(Foto: El Comercio)" width="600">
+                            <i-amphtml-sizer style="display:block;padding-top:60.0000%;"></i-amphtml-sizer><img
+                                decoding="async" alt="(Foto: El Comercio)" title="(Foto: El Comercio)" srcset="https://img-elcomercio-pe.cdn.ampproject.org/ii/w680/s/img.elcomercio.pe/uploads/2018/09/10/5b968159cd40f.jpeg 680w, https://img-elcomercio-pe.cdn.ampproject.org/ii/w1200/s/img.elcomercio.pe/uploads/2018/09/10/5b968159cd40f.jpeg 1200w"
+                                src="https://img-elcomercio-pe.cdn.ampproject.org/i/s/img.elcomercio.pe/uploads/2018/09/10/5b968159cd40f.jpeg"
+                                class="i-amphtml-fill-content i-amphtml-replaced-content">
+                        </amp-img>
+                        <a class="control-right" href="http://elcomercio.pe/lima/sucesos/alianza-lima-encuentra-estadio-matute-invasion-evangelicos-fotos-noticia-555830?foto=2"
+                            target="_top"></a>
+                    </div>
+                    <div class="legend">
+                        <div class="caption">(Foto: El Comercio)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="i-amphtml-slide-item i-amphtml-slide-item-show">
+                <div class="slide amp-carousel-slide" aria-hidden="true">
+                    <div class="inner">
+                        <amp-img alt="(Foto: Lino Chipana / El Comercio)" class="i-amphtml-layout-responsive i-amphtml-layout-size-defined i-amphtml-element i-amphtml-layout"
+                            height="360" i-amphtml-layout="responsive" layout="responsive" src="https://img-elcomercio-pe.cdn.ampproject.org/i/s/img.elcomercio.pe/uploads/2018/09/10/5b96802769a43.jpeg"
+                            srcset="https://img-elcomercio-pe.cdn.ampproject.org/ii/w680/s/img.elcomercio.pe/uploads/2018/09/10/5b96802769a43.jpeg 680w, https://img-elcomercio-pe.cdn.ampproject.org/ii/w1200/s/img.elcomercio.pe/uploads/2018/09/10/5b96802769a43.jpeg 1200w"
+                            title="(Foto: Lino Chipana / El Comercio)" width="600">
+                            <i-amphtml-sizer style="display:block;padding-top:60.0000%;"></i-amphtml-sizer><img
+                                decoding="async" alt="(Foto: Lino Chipana / El Comercio)" title="(Foto: Lino Chipana / El Comercio)"
+                                srcset="https://img-elcomercio-pe.cdn.ampproject.org/ii/w680/s/img.elcomercio.pe/uploads/2018/09/10/5b96802769a43.jpeg 680w, https://img-elcomercio-pe.cdn.ampproject.org/ii/w1200/s/img.elcomercio.pe/uploads/2018/09/10/5b96802769a43.jpeg 1200w"
+                                src="https://img-elcomercio-pe.cdn.ampproject.org/i/s/img.elcomercio.pe/uploads/2018/09/10/5b96802769a43.jpeg"
+                                class="i-amphtml-fill-content i-amphtml-replaced-content">
+                        </amp-img>
+                        <a class="control-right" href="http://elcomercio.pe/lima/sucesos/alianza-lima-encuentra-estadio-matute-invasion-evangelicos-fotos-noticia-555830?foto=2"
+                            target="_top"></a>
+                    </div>
+                    <div class="legend">
+                        <div class="caption">(Foto: Lino Chipana / El Comercio)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div tabindex="0" class="amp-carousel-button amp-carousel-button-prev amp-disabled i-amphtml-screen-reader"
+            role="button" aria-disabled="true" title="Previous item in carousel (1 of 2)"></div>
+        <div tabindex="0" class="amp-carousel-button amp-carousel-button-next i-amphtml-screen-reader" role="button"
+            aria-disabled="false" title="Next item in carousel (2 of 2)"></div>
+    </amp-carousel>
 </body>
 
 </html>
