@@ -1,0 +1,177 @@
+.q_logo a{
+    height: 120px !important;
+    top: 30px !important;
+}
+
+.bg-counter{
+    background: rgba(0,0,0,0.8);
+    color: white !important;
+}
+
+.bg-counter .titulo{
+    color:white !important;
+    text-align: center;
+    margin-bottom: 20px !important;
+}
+#clock {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+#clock span{
+    font-size: 45px;
+    font-weight: bold;
+    font-family: 'Audiowide', cursive;
+}
+.btn-inscripcion{
+    padding: 15px 50px;
+    background: #E94E1B;
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    border:0px;
+    cursor: pointer;
+    outline: none;
+}
+.q_icon_list .qode-ili-icon-holder{
+    margin-top: 3px;
+}
+
+.q_icon_list{
+    margin-bottom: 13px;
+}
+
+.footer_top h5{
+    margin-bottom: 29px
+}
+
+.q_icon_with_title .icon_text_inner .icon_title{
+    margin-bottom: 13px;
+}
+
+.highlight{
+    display: inline-block;
+    position: relative;
+}
+
+.highlight:after {
+    content: ' ';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    display: block;
+    background-color: #FFDE00;
+    width: 100%;
+    height: 0.5em;
+    z-index:-1;
+}
+
+.tt_tabs .tt_tabs_navigation li a{
+background: #000;
+color: #FFDE00!important;
+border-color: #000!important;
+font-weight: 600;
+font-size:13px;
+text-transform: uppercase;
+border-radius: 10px;
+}
+
+.tt_tabs .tt_tabs_navigation li a:hover{
+background-color: #FFDE00;
+color: #000!important
+}
+
+.tt_tabs .tt_tabs_navigation .ui-tabs-active a{
+background-color: #FFDE00;
+color: #000!important
+}
+
+
+table.tt_timetable thead > tr > th:first-child:before{
+content: 'Days';
+}
+
+table.tt_timetable thead > tr > th{
+text-transform: uppercase;
+color: #888;
+font-style: italic;
+font-size: 15px;
+font-weight: 500;
+}
+
+3) table.tt_timetable .event .event_header{
+font-weight: 600;
+font-style: italic;
+text-transform: uppercase;
+}
+
+table.tt_timetable .event .event_header:not(:only-child){
+margin-bottom: 5px;
+}
+
+.tt_tabs .tt_timetable tr td:first-child{
+color: #888;
+font-style: italic;
+font-weight: 500;
+}
+
+table.tt_timetable, table.tt_timetable thead tr, table.tt_timetable tbody tr{
+border: none;
+}
+
+table.tt_timetable{
+margin-top: 23px;
+}
+
+.qode_video_box .qode_video_image .qode_video_box_button{
+    box-shadow: 6px 6px 23px 0px rgba(0,0,0,0.2);
+}
+
+.testimonials_holder .flex-direction-nav a{
+    border-radius: 0;
+    background-color: #000;
+    border-color: #000;
+    padding-right: 8px;
+}
+
+.testimonials_holder .flex-direction-nav a:before{
+    color: #FFDE00;
+    font-size: 20px;
+    margin-right: 0px;
+}
+
+.testimonials_holder .flex-direction-nav a:hover{
+    background-color: #FFDE00;
+    border-color: #FFDE00;
+}
+
+.testimonials_holder .flex-direction-nav a:hover:before{
+    color: #000;
+}
+
+.testimonials_holder .flex-direction-nav a.flex-prev:before{
+    left: -1px;
+}
+
+.testimonials_holder .flex-direction-nav a.flex-next:before{
+    left: 1px;
+}
+
+@media only screen and (max-width: 1440px){
+    nav.main_menu>ul>li>a{
+        padding: 0 8px;
+    }
+}
+
+@media only screen and (max-width: 1440px){
+    nav.main_menu>ul>li>a{
+        font-size: 17px;
+        text-shadow: 1px 1px #000000;
+    }
+    nav.main_menu>ul>li>a:hover{
+        color: #FFDE00;
+    }
+}
+
+.four_columns>.column1>.column_inner {
+    padding: 0 80px 0 0;
+}
