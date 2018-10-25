@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>postMessage remote</title>
+    <script>
+      window.addEventListener("message", function (e) {
+        alert("message from " + e.origin + ": " + e.data);
+      });
+
+      // Send a message to the parent window every 5 seconds
+      setInterval(function () {
+        window.parent.postMessage("hello", "*");
+      }, 5000);
+    </script>
+  </head>
+  <body>
+    <h2>postMessage remote</h2>
+  </body>
+</html>

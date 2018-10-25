@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <title>postMessage launcher</title>
+    <script>
+      function openWnd() {
+        var w = window.open("", "theWnd", "resizeable,status,width=400,height=300"),
+            i = w.document.createElement("iframe");
+
+        i.src = "http://jorgeduenas.com/postmessageie/remote.htm";
+        w.document.body.appendChild(i);
+
+        w.addEventListener("message", function (e) {
+          console.log("message from " + e.origin + ": " + e.data);
+
+          // Send a message back to the source
+          e.source.postMessage("reply", e.origin);
+        });
+      }
+    </script>
+  </head>
+  <body>
+    <h2>postMessage launcher</h2>
+    <p><a href="javascript:openWnd();">click me</a></p>
+  </body>
+</html>
