@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="MyApp">
+
+  <head>
+    <meta charset="utf-8" />
+    <title>demo post message</title>
+    <!-- <script>document.write('<base href="' + document.location + '" />');</script> -->
+    <script data-require="angular.js@1.2.x" src="https://code.angularjs.org/1.2.20/angular.js" data-semver="1.2.20"></script>
+    <script src="angular-post-message.js"></script>
+    <script src="app.js"></script>
+  </head>
+
+  <body ng-controller="MainCtrl">
+    <p>messages should be received every second</p>
+    <!-- <iframe src="https://rawgit.com/kylewelsby/585b3a5395c6731acc50/raw/f661e856adbccf39549ed7c550661f09158f8d55/index.html"></iframe> -->
+    <iframe src="https://jab.pe/mpp/test/index.html"></iframe>
+    <br>
+
+    <button onclick="window.open('https://jab.pe/mpp/test/index.html', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">Login</button>
+
+    <br>
+    <p>send response after inital message received from child frame.</p>
+    <button ng-click="sendMessage();">Send response</button><br/>
+    <ol>
+      <li ng-repeat="message in messages">{{message}}</li>
+    </ol>
+  </body>
+</html>

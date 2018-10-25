@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Popup</title>
+</head>
+<body>
+
+<script type="text/javascript">
+  window.opener.postMessage({token: 'aaa', secret: 'bbb'}, 'http://localhost');
+</script>
+	
+</body>
+</html>

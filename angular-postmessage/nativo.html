@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Index</title>
+</head>
+<body>
+        <!-- <button onclick="window.open('https://jab.pe/mpp/test/index.html', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');">Login</button> -->
+        
+        <!-- <button onclick="window.open('popup.html','mywindow', 'width=350,height=250')">Login</button> -->
+        
+        <button onclick="popupwindow('https://jab.pe/mpp/test/index.html','mywindow', '800','600')">Login</button>
+
+        <script type="text/javascript">
+
+        function popupwindow(url, title, w, h) {
+            var left = (screen.width/2)-(w/2);
+            var top = (screen.height/2)-(h/2);
+            return window.open(url, title, 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width='+w+', height='+h+', top='+top+', left='+left);
+        } 
+
+        // window.open ("popup.html","mywindow", "width=350,height=250");
+        // Create IE + others compatible event handler
+        var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+        var eventer = window[eventMethod];
+        var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+        // Listen to message from child window
+        eventer(messageEvent,function(e) {
+            console.log('origin: ', e.origin)
+            
+            // Check if origin is proper
+            if( e.origin != 'https://jab.pe' ){ return }
+            console.log('parent received message!: ', e.data);
+        }, false);
+        
+        </script>
+</body>
+</html>
