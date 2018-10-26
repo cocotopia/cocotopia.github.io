@@ -16,6 +16,19 @@
           e.source.postMessage("reply", e.origin);
         });
       }
+
+
+
+
+      
+      var left = (screen.width/2)-(800/2);
+            var top = (screen.height/2)-(600/2);
+            var w = window.open('https://pre.ecoid.pe/mpp/facebook/login/', 'Login Facebook', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=780, height=640, top='+top+', left='+left);
+          
+      w.addEventListener("message", function (e) {
+        console.log("message from " + e.origin + ": " + e.data);
+      });
+
     </script>
   </head>
   <body>

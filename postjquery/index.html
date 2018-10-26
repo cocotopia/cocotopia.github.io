@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0, user-scalable=yes" />
+    <title>Title</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
+    <style type="text/css">
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="container">
+                <h1 class="col-lg-9">Receive message from child window</h1>
+
+            </div>
+        </header>
+        <div class="container">
+            <h5>Author: Julian Hansen, November 2017</h5>
+            <p class="alert alert-success">This sample opens a new window when the button is clicked. When the new
+                window open it sends a message back which is
+                then displayed in the result area</p>
+            <button class="btn btn-primary">Open Window</button>
+            <h2>Result</h2>
+            <div id="result" class="alert alert-success"></div>
+        </div>
+    </div>
+    <footer>
+        <div class="container">
+            Copyright Julian Hansen &copy; 2017
+        </div>
+    </footer>
+
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script>
+        $(function () {
+            $('button').click(function () {
+                window.open('children.html', 'testwindow');
+                window.addEventListener("message", function (event) {
+                    $('#result').html("Child window says: " + event.data);
+                }, false);
+            })
+        });
+    </script>
+</body>
+
+</html>
