@@ -20,8 +20,11 @@
     }
 
     var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+    console.log(eventMethod)
     var eventer = window[eventMethod];
+    console.log(eventer)
     var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    console.log(messageEvent)
     
     // Listen to message from child window
     eventer(messageEvent,function(e) {
