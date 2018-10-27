@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+<button onclick="openPopUp()">dale!</button>
+
+<script>
+
+    function openPopUp(){
+        var left = (screen.width/2)-(800/2);
+        var top = (screen.height/2)-(600/2);
+        return window.open('https://jab.pe/mpp/test/popup.html', 'Login Facebook', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=780, height=640, top='+top+', left='+left);
+    }
+
+    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
+    
+    // Listen to message from child window
+    eventer(messageEvent,function(e) {
+        console.log('origin: ', e.origin);
+        //Check if origin is proper
+        if( e.origin != 'https://jab.pe' ){ return }
+        console.log(e.data)
+    }, false);  
+      
+</script>
+</body>
+</html>
