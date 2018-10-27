@@ -8,13 +8,13 @@
 </head>
 <body>
     <script>
-        window.opener.postMessage({"accessToken": "213123123123123", "emailUser": "cocotopia@gmail.com", "providerSource":"FB" }, 'https://jorgeduenas.com');
+        //window.opener.postMessage({"accessToken": "213123123123123", "emailUser": "cocotopia@gmail.com", "providerSource":"FB" }, 'https://jorgeduenas.com');
 
         //window.top.postMessage({"accessToken": "213123123123123", "emailUser": "cocotopia@gmail.com", "providerSource":"FB" }, 'https://jorgeduenas.com');
 
         //window.parent.postMessage({"accessToken": "213123123123123", "emailUser": "cocotopia@gmail.com", "providerSource":"FB" }, 'https://jorgeduenas.com');
 
-         window.parent.postMessage('hi there', '*');
+         window.parent.postMessage({"accessToken": "213123123123123", "emailUser": "cocotopia@gmail.com", "providerSource":"FB" }, '*');
 
         setTimeout(function(){
             window.close();
