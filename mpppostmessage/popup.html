@@ -8,10 +8,17 @@
 </head>
 <body>
     <script>
-        window.opener.postMessage({"accessToken": "213123123123123", "emailUser": "cocotopia@gmail.com", "providerSource":"FB" }, '*');
+        window.opener.postMessage({"accessToken": "213123123123123", "emailUser": "cocotopia@gmail.com", "providerSource":"FB" }, 'https://jorgeduenas.com');
+
+        //window.top.postMessage({"accessToken": "213123123123123", "emailUser": "cocotopia@gmail.com", "providerSource":"FB" }, 'https://jorgeduenas.com');
+
+        //window.parent.postMessage({"accessToken": "213123123123123", "emailUser": "cocotopia@gmail.com", "providerSource":"FB" }, 'https://jorgeduenas.com');
+
+         window.parent.postMessage('hi there', '*');
+
         setTimeout(function(){
             window.close();
-        }, 800);
+        }, 3000);
     </script>
 </body>
 </html>
