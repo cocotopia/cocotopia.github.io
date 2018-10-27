@@ -21,24 +21,18 @@
     }
 
     var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
-    console.log(eventMethod)
     var eventer = window[eventMethod];
-    console.log(eventer)
     var messageEvent = eventMethod == "attachEvent" ? "onmessage" : "message";
-    console.log(messageEvent)
     
     // Listen to message from child window
     eventer(messageEvent,function(e) {
         console.log('origin: ', e.origin);
         //Check if origin is proper
         if( e.origin != 'https://jab.pe' ){ return }
-        console.log(e.data)
+        console.log(e.data.accessToken)
+        console.log(e.data.emailUser)
+        console.log(e.data.providerSource)
     }, false);  
-      
-
-    //window.addEventListener('message', console.log.bind(console, 'Got message:'));
-   
-    
 
 </script>
 </body>
