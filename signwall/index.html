@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>@cocotopia</title>
+</head>
+<body>
+	<h2>El tiempo</h2>
+	<input type="text" placeholder="Ingresar Ciudad"/>
+	<input type="button" value="Validar"/>
+
+	<section class="section__main">
+			<div class="section__content">
+					<div class="weather__block" id="js_w_temp"></div>
+					<div class="weather__block" id="js_w_icon"></div>
+					<p></p>
+			</div>
+	</section>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>	
+<script>
+
+	var app = {};
+	app.apikey = "8253ee7e45025695deca4098ceed1c02";
+	app.url = "https://api.openweathermap.org/data/2.5/weather?q=Lima&APPID=" + app.apikey + "&units=metric";
+
+	app.cargaDatos = function(){
+		$.ajax({
+			url: app.url,
+			success: function( data ) {
+				console.log(data);
+				app.datos = data;
+				app.procesaDatos();
+			},
+			error: function(){
+				alert("¡Ups! No puedo obtener información de la API");
+			}
+		});
+	}
+	
+	app.procesaDatos = function(){
+		app.condicionNombre = app.datos.weather[0].main;
+		app.temperatura = app.datos.main.temp;
+
+		var condicionIcono = app.datos.weather[0].icon;
+		app.icono = app.obtenIcono( condicionIcono );
+
+		app.muestra();
+
+	} 
+	
+	app.muestra = function(){
+		$('#js_w_temp').append("<p class='weather_temperature'>" +  app.temperatura + "º</p>");
+		$('#js_w_icon').append(" <i class='wi " + app.icono + "'></i>");
+
+		$('#js_w_icon').append("<p class='weather_name'>" +  app.condicionNombre.toUpperCase() + "</p>");
+
+	}
+	
+	app.obtenIcono = function( weatherIcon ) {
+
+		var icon;
+		switch( weatherIcon ){
+			case "01d":
+			case "01n":
+			icon = "wi-day-sunny";
+			break;
+			case "02d":
+			case "02n":
+			icon = "wi-day-cloudy";
+			break;
+
+			case "03d":
+			case "03n":
+			icon = "wi-cloud";
+			break;
+
+			case "04d":
+			case "04n":
+			icon = "wi-cloudy";
+			break;
+
+			case "09d":
+			case "09n":
+			icon = "wi-rain";
+			break;
+
+			case "10d":
+			case "10n":
+			icon = "wi-day-rain-mix";
+			break;
+
+			case "11d":
+			case "11n":
+			icon = "wi-thunderstorm";
+			break;
+
+			case "13d":
+			case "13n":
+			icon = "wi-snow";
+			break;
+
+			case "50d":
+			case "50n":
+			icon = "wi-fog";
+			break;
+
+			default:
+			icon = "wi-day-sunny";
+			break;
+
+		}
+
+		return icon;
+	}
+	
+	//app.cargaDatos();
+
+	var text = document.querySelector('input[type="text"]');
+	var button = document.querySelector('input[type="button"]');
+	var parraf = document.querySelector('p');
+	var instance;
+
+	button.addEventListener('click', function(e){
+		instance = window.open('check.html?city=none','blank');
+		e.preventDefault();
+			fetch("https://api.openweathermap.org/data/2.5/weather?q=" + text.value + "&APPID=" + app.apikey + "&units=metric")
+				.then(
+					function(response) {
+						if (response.status !== 200) {
+							console.log('Looks like there was a problem. Status Code: ' + response.status);
+							return;
+						}
+						response.json().then(function(data) {
+							console.log(data);
+							console.log(data.name);
+							if( text.value.toLowerCase() == 'lima' ){
+								//instance.location =  'http://google.com/search?q='+ text.value.toLowerCase();
+								instance.location =  'check.html?city='+ text.value.toLowerCase();
+								parraf.textContent = 'Genial! es Lima y el clima es ' + data.name  + " es " + data.main.temp;
+								instance.postMessage("hello mundo", "https://jorgeduenas.com");
+							}else{
+								console.log('No es Lima. Pero el clima de ' + data.name  + " es " + data.main.temp )
+								parraf.textContent = 'No es Lima. Pero el clima de ' + data.name  + " es " + data.main.temp;
+							}
+						});
+					}
+				)
+				.catch(function(err) {
+					console.log('Fetch Error :-S', err);
+				});
+});
+</script>
+</body>
+</html>
