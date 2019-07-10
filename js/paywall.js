@@ -5557,7 +5557,7 @@ return a.hostname;
         },
         customRegCheck: function () {
             var start = Date.now();
-            var isLoggedIn = window.localStorage.getItem('ArcId.USER_PROFILE') !== "null" ? true : false;
+            var isLoggedIn = window.localStorage.getItem('ArcId.USER_PROFILE') !== "null" ? false : true;
             return Promise.resolve({
                 l: isLoggedIn,
                 timeTaken: Date.now() - start
