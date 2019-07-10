@@ -5548,14 +5548,15 @@ return a.hostname;
         //         ci: Date.now()
         //     };
         // },
-        customSubCheck: function () {
+        userName: 'cocotopia@gmail.com',
+        customSubCheck: function () { // estado de suscripcin
             return Promise.resolve({
                 "s": false,
                 "timeTaken": 100,
                 "updated": Date.now()
             })
         },
-        customRegCheck: function () {
+        customRegCheck: function () { // estado de registro
             var start = Date.now();
             var isLoggedIn = window.localStorage.getItem('ArcId.USER_PROFILE') !== "null" ? false : true;
             return Promise.resolve({
