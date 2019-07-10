@@ -5557,7 +5557,7 @@ function getHostnameFromURL(url) {
         },
         customRegCheck: function () {
             var start = Date.now();
-            var isLoggedIn = window.localStorage.getItem('ArcId.USER_PROFILE') ? true : false;
+            var isLoggedIn = window.localStorage.getItem('ArcId.USER_PROFILE') !== "null" ? true : false;
             return Promise.resolve({
                 l: isLoggedIn,
                 timeTaken: Date.now() - start
