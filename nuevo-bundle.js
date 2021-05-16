@@ -1855,3 +1855,4 @@
       })())(window.SITE_CONFIG);
   },
 ]);
+console.log('cargando nuevo bundle');
