@@ -809,7 +809,7 @@
             {
               key: "init",
               value: function () {
-                console.log("js.v21062018"),
+                console.log("js.v17052021"),
                   this.selectors(),
                   this.openModals(),
                   this.openModalsCancelSuscrip(),
@@ -1254,15 +1254,15 @@
                               else if (1 == r.data.state) {
                                 window.dataLayer = window.dataLayer || [];
                                 window.dataLayer.push(r.taggeo || {});
-                                "DIRECT" == r.data.payment.confirmation
-                                  ? (location.href =
-                                      "/payment/confirmacion/" +
-                                      r.data.paid +
-                                      "/" +
-                                      r.data.payment.type)
-                                  : (location.href =
-                                      "/payment/confirmacion-recurrencia/" +
-                                      r.data.paid);
+                                // "DIRECT" == r.data.payment.confirmation
+                                //   ? (location.href =
+                                //       "/payment/confirmacion/" +
+                                //       r.data.paid +
+                                //       "/" +
+                                //       r.data.payment.type)
+                                //   : (location.href =
+                                //       "/payment/confirmacion-recurrencia/" +
+                                //       r.data.paid);
                               } else {
                                 console.log(r.message);
                                 var n = document.querySelector(
@@ -1855,4 +1855,3 @@
       })())(window.SITE_CONFIG);
   },
 ]);
-console.log('cargando nuevo bundle');
