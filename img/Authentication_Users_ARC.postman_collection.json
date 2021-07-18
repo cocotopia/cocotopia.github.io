@@ -1,0 +1,395 @@
+{
+	"info": {
+		"_postman_id": "43819021-fae3-4c45-b4c7-b2afc67b72bd",
+		"name": "Authentication Users ARC",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"userName\":\"usuario_test_3@mailinator.com\",\n\t\"credentials\":\"12345678\",\n\t\"grantType\":\"password\"\n}\n"
+				},
+				"url": {
+					"raw": "https://api-sandbox.elcomercio.pe/identity/public/v1/auth/token",
+					"protocol": "https",
+					"host": [
+						"api-sandbox",
+						"elcomercio",
+						"pe"
+					],
+					"path": [
+						"identity",
+						"public",
+						"v1",
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"identity\": {\n        \"userName\": \"usuario_test_4@mailinator.com\",\n        \"credentials\": \"12345678\",\n        \"password\": \"password\"\n    },\n    \"profile\": {\n        \"firstName\": \"Juan\",\n        \"lastName\": \"Dueñas\",\n        \"secondLastName\": \"Arocutipa\",\n        \"displayName\": \"usuario_test_4@mailinator.com\",\n        \"email\": \"usuario_test_4@mailinator.com\",\n        \"contacts\": [\n            {\n                \"phone\": \"787878882\",\n                \"type\": \"HOME\"\n            }\n        ],\n        \"attributes\": [\n            {\n                \"name\": \"deviceOrigin\",\n                \"value\": \"desktop\",\n                \"type\": \"String\"\n            },\n            {\n                \"name\": \"typeDocument\",\n                \"value\": \"DNI\",\n                \"type\": \"String\"\n            },\n            {\n                \"name\": \"document\",\n                \"value\": \"45676777\",\n                \"type\": \"String\"\n            }\n        ]\n    }\n}"
+				},
+				"url": {
+					"raw": "https://api-sandbox.elcomercio.pe/identity/public/v1/signup",
+					"protocol": "https",
+					"host": [
+						"api-sandbox",
+						"elcomercio",
+						"pe"
+					],
+					"path": [
+						"identity",
+						"public",
+						"v1",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User Profile",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1dWlkIjoiZTc1ODBmZDgtYWRkMC00NmI3LWJjNTktYjc2OGFmNzVhYjM0IiwidW4iOiJ1c3VhcmlvX3Rlc3RfNEBtYWlsaW5hdG9yLmNvbSIsImRhdGUiOiIxNjI0NzI2NTM2NjkyIiwiaWF0IjoxNjI0NzI2NTM2LCJleHAiOjE2MjQ3MjcxMzYsImp0aSI6ImEzMzkwODVkLWI5YTctNGZkMy05ZjY3LTA2NzI2NjE3ZjM1ZCJ9.XSZ__77qgdCdnU9hcTQ8MYnSMFfujowH4ujcKFMSVfh3YPbK3xS039_1TyJoLbWXPpyMzW0UWajXyvV2g_4vog",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api-sandbox.elcomercio.pe/identity/public/v1/profile",
+					"protocol": "https",
+					"host": [
+						"api-sandbox",
+						"elcomercio",
+						"pe"
+					],
+					"path": [
+						"identity",
+						"public",
+						"v1",
+						"profile"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJ1dWlkIjoiNGJmNTAyNmMtMWI1Yi00ZTljLTk3MTAtYjZjMThjNzZlZjYxIiwiZG4iOiJ1c3VhcmlvX3Rlc3RfMkBtYWlsaW5hdG9yLmNvbSIsInVuIjoidXN1YXJpb190ZXN0XzJAbWFpbGluYXRvci5jb20iLCJkYXRlIjoiMTYyNDcyMzcwMjQ4NSIsImlhdCI6MTYyNDcyMzcwMiwiZXhwIjoxNjI0NzI0MzAyLCJqdGkiOiJlYjJhNGM5Yy1iNjY0LTRjNjAtOWNkNy0xODNkNWMzNmVmN2QifQ.t2N6gD_xBouscKKUIlXWQq_nXG1tjNPvurUYDyAGwOhnBrrlhE9W1qRhOIPepVIOv39CNJSbIKfL0EjdIMcIPQ",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"name": "Content-Type",
+						"value": "",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"demo\",\n    \"lastName\": \"demo\",\n    \"secondLastName\": \"demo\",\n    \"displayName\": \"usuario_test_2@mailinator.com\",\n    \"email\": \"usuario_test_2@mailinator.com\",\n    \"contacts\": [\n        {\n            \"phone\": \"999999999\",\n            \"type\": \"HOME\"\n        }\n    ],\n    \"attributes\": [\n        {\n            \"name\": \"deviceOrigin\",\n            \"value\": \"desktop\",\n            \"type\": \"String\"\n        },\n        {\n            \"name\": \"typeDocument\",\n            \"value\": \"CEX\",\n            \"type\": \"String\"\n        },\n        {\n            \"name\": \"document\",\n            \"value\": \"9999999999\",\n            \"type\": \"String\"\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "https://api-sandbox.elcomercio.pe/identity/public/v1/profile",
+					"protocol": "https",
+					"host": [
+						"api-sandbox",
+						"elcomercio",
+						"pe"
+					],
+					"path": [
+						"identity",
+						"public",
+						"v1",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Extend Session User",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"token\": \"eyJhbGciOiJIUzUxMiJ9.eyJ1dWlkIjoiYzA1Y2RjMzUtNzcyMC00ODM2LTkwMzAtZDk0MGIwNTQ2YmM5IiwiZG4iOiJ1c3VzYXJpb19wcnVlYmFzXzFAbWFpbGluYXRvci5jb20iLCJ1biI6InVzdXNhcmlvX3BydWViYXNfMUBtYWlsaW5hdG9yLmNvbSIsImRhdGUiOiIxNjI0NzE1NTI0MDUzIiwiaWF0IjoxNjI0NzE1NTI0LCJleHAiOjE2NTYyNTE1MjQsImp0aSI6ImU4Y2U3NTdiLTUxNzgtNGU2Ni04YjlmLWMwMTUzMGMzNTgyOSIsInBqdGkiOiJmYWY0YzBhMS02NzVhLTQ5NDMtYjk1Ny05ZmIzNjFjZGFhODkifQ.Uc7mCnleYRPxPCt_utHOF1C_X--jkB-tbUiNbzAaE_8ULs5GZah6r-N7F38iWlGG3mafkdCfzyHeBkEcdCUhLg\",\r\n    \"grantType\": \"refresh-token\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-sandbox.elcomercio.pe/identity/public/v1/auth/token",
+					"protocol": "https",
+					"host": [
+						"api-sandbox",
+						"elcomercio",
+						"pe"
+					],
+					"path": [
+						"identity",
+						"public",
+						"v1",
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout User",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1dWlkIjoiOGM5N2JiNGMtMTE4Ni00NzJkLWEzYmEtZTMwZGE3MmVjZmVmIiwiZG4iOiJ3YWxkbyIsInVuIjoid2FsZG9AbWFjYWNvLmNvbSIsImRhdGUiOiIxNjE5NjUzMjkxNjIxIiwiaWF0IjoxNjE5NjUzMjkxLCJleHAiOjE2MTk2NTM1OTEsImp0aSI6ImQxNWE4YWFjLTQ1NGItNGY0Mi04MzVmLTBlMGE2YTM1N2Y2ZCJ9.e-9xZUS2xjPYE6Zc5cdDGMDunCuplGYFGTB0-0Pp1eV0YHTR8wsizKn0QFhvuHj_nREvSZfdjx7-BMZC_URKsg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api-sandbox.elcomercio.pe/identity/public/v1/auth/token",
+					"protocol": "https",
+					"host": [
+						"api-sandbox",
+						"elcomercio",
+						"pe"
+					],
+					"path": [
+						"identity",
+						"public",
+						"v1",
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Password",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "hbGciOiJIUzUxMiJ9.eyJ1dWlkIjoiNGJmNTAyNmMtMWI1Yi00ZTljLTk3MTAtYjZjMThjNzZlZjYxIiwiZG4iOiJ1c3VhcmlvX3Rlc3RfMkBtYWlsaW5hdG9yLmNvbSIsInVuIjoidXN1YXJpb190ZXN0XzJAbWFpbGluYXRvci5jb20iLCJkYXRlIjoiMTYyNDcyNDc2MTM2OSIsImlhdCI6MTYyNDcyNDc2MSwiZXhwIjoxNjI0NzI1MzYxLCJqdGkiOiJkNGE4NWYyYi1mMjgzLTQxMDItYWNjZi0xYmMwY2U2NWJmZjYifQ.1BWcdZOlfgPNOPFR4LxLHed-nANwqWltpzI0_zO3Xpx-IMz5GkS7Y83Stj4-ykOlDCBL1jxVTZzkixlUacDuaw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"oldPassword\": \"12345678\",\r\n  \"newPassword\": \"123qwe123qwe\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-sandbox.elcomercio.pe/identity/public/v1/password",
+					"protocol": "https",
+					"host": [
+						"api-sandbox",
+						"elcomercio",
+						"pe"
+					],
+					"path": [
+						"identity",
+						"public",
+						"v1",
+						"password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"userName\": \"usuario_test_2@mailinator.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-sandbox.elcomercio.pe/identity/public/v1/password/reset",
+					"protocol": "https",
+					"host": [
+						"api-sandbox",
+						"elcomercio",
+						"pe"
+					],
+					"path": [
+						"identity",
+						"public",
+						"v1",
+						"password",
+						"reset"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Password 2",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"newPassword\": \"abcdefgh\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-sandbox.elcomercio.pe/identity/public/v1/password/reset/ieXL-8nMi31TjI_K7wJerNLSRtHmxgYVKvE9MVATBwWMFBby",
+					"protocol": "https",
+					"host": [
+						"api-sandbox",
+						"elcomercio",
+						"pe"
+					],
+					"path": [
+						"identity",
+						"public",
+						"v1",
+						"password",
+						"reset",
+						"ieXL-8nMi31TjI_K7wJerNLSRtHmxgYVKvE9MVATBwWMFBby"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Email 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"usuario_test_3@mailinator.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api-sandbox.elcomercio.pe/identity/public/v1/email/verify",
+					"protocol": "https",
+					"host": [
+						"api-sandbox",
+						"elcomercio",
+						"pe"
+					],
+					"path": [
+						"identity",
+						"public",
+						"v1",
+						"email",
+						"verify"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verify Email 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api-sandbox.elcomercio.pe/identity/public/v1/email/verify/uzB0Sy4YtSTDCA2nC53k9bnN-HSFJH_f4pj0IvaTHt2SLIVT",
+					"protocol": "https",
+					"host": [
+						"api-sandbox",
+						"elcomercio",
+						"pe"
+					],
+					"path": [
+						"identity",
+						"public",
+						"v1",
+						"email",
+						"verify",
+						"uzB0Sy4YtSTDCA2nC53k9bnN-HSFJH_f4pj0IvaTHt2SLIVT"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
