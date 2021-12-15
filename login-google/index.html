@@ -11,10 +11,12 @@
   <script src="https://accounts.google.com/gsi/client" async defer></script>
 
   <body>
+    <h4 id="responde"></h4>
     <script>
       function handleCredentialResponse(response) {
         console.log(response);
         console.log("Encoded JWT ID token: " + response.credential);
+        document.querySelector("responde").innerText = response.credential;
       }
       window.onload = function () {
         google.accounts.id.initialize({
